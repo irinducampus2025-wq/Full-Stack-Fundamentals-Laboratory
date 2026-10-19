@@ -44,3 +44,9 @@ footer {
   background-color: #007bff;
   color: #fff;
 }
+.feature-box i {
+  font-size: 40px;
+  color: #007bff;
+  display: block;
+  margin-bottom: 10px;
+}
