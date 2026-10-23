@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tasklane - a simple, responsive to-do list built with HTML, CSS, Bootstrap 5 and JavaScript.">
+  <title>Tasklane | To-Do List</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-sm app-nav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+               stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12.5l4.5 4.5L19 7.5"/>
+          </svg>
+        </span>
+        Tasklane
+      </a>
+      <span class="nav-date" id="todayDate"></span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-inner">
+      <h1 class="hero-title">What&rsquo;s on your list today?</h1>
+      <p class="hero-sub" id="progressText">Add your first task to get started.</p>
+
+      <div class="progress hero-progress" role="progressbar" aria-label="Completed tasks"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressTrack">
+        <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container app-wrap">
+    <section class="app-card" aria-labelledby="listHeading">
+      <h2 class="visually-hidden" id="listHeading">Your tasks</h2>
+
+      <form id="taskForm" novalidate>
+        <label for="taskInput" class="visually-hidden">New task</label>
+        <div class="input-group input-group-lg add-group">
+          <input type="text" id="taskInput" class="form-control" placeholder="Write a task, e.g. Finish Chapter 4 notes"
+                 maxlength="80" autocomplete="off" aria-describedby="taskError">
+          <button type="submit" class="btn btn-add" id="addBtn">Add Task</button>
+        </div>
+        <div class="field-error" id="taskError" role="alert" aria-live="assertive" hidden></div>
+      </form>
+
+      <div class="toolbar">
+        <div class="btn-group filter-group" role="group" aria-label="Filter tasks">
+          <button type="button" class="btn btn-filter active" data-filter="all"       aria-pressed="true">All</button>
+          <button type="button" class="btn btn-filter"        data-filter="active"    aria-pressed="false">Active</button>
+          <button type="button" class="btn btn-filter"        data-filter="completed" aria-pressed="false">Completed</button>
+        </div>
+        <span class="task-counter" id="taskCounter" aria-live="polite">0 tasks left</span>
+      </div>
+
+      <ul class="task-list list-unstyled" id="taskList"></ul>
+
+      <div class="empty-state" id="emptyState" hidden>
+        <p class="empty-title" id="emptyTitle"></p>
+        <p class="empty-text" id="emptyText"></p>
+      </div>
+
+      <div class="card-footer-row">
+        <button type="button" class="btn btn-clear" id="clearBtn" disabled>Clear Completed</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="container">Built with HTML, CSS, Bootstrap 5 &amp; JavaScript. Your tasks are saved in this browser.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
